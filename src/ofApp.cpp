@@ -76,7 +76,7 @@ void ofApp::setup(){
 
 		auto timeGenerator3 = std::make_shared<BasicTimeGen>();
 		timeGenerator3->m_minTime = 1.0;
-		timeGenerator3->m_maxTime = 30.0; //10
+		timeGenerator3->m_maxTime = 15.0; //10
 		particleEmitter3->addGenerator(timeGenerator3);
 
 	}
@@ -95,7 +95,7 @@ void ofApp::setup(){
 	
 
 	auto posColorUpdater = std::make_shared<PosColorUpdater>(); //color based on position
-	posColorUpdater->m_minPos = glm::vec4{ 4.5 };
+	posColorUpdater->m_minPos = glm::vec4{ 3.5 };
 	posColorUpdater->m_maxPos = glm::vec4{ 5.0 };
 	ps->addUpdater(posColorUpdater);
 	ps2->addUpdater(posColorUpdater);
@@ -103,7 +103,7 @@ void ofApp::setup(){
 	auto m_floorUpdater = std::make_shared<FloorUpdater>();
 	m_floorUpdater->m_floorY = 50.f;
 	ps->addUpdater(m_floorUpdater);
-	ps2->addUpdater(m_floorUpdater);
+	//ps2->addUpdater(m_floorUpdater);
 
 	
 
