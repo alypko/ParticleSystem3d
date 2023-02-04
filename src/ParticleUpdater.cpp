@@ -17,6 +17,21 @@ void EulerUpdater::update(float dt, ParticleData* p)
         p->m_pos[i] += localDT * p->m_vel[i];
 }
 
+void MouseAttractor::update(float dt, ParticleData* p)
+{
+    const unsigned int endId = p->m_countAlive;
+
+    
+    for (size_t i = 0; i < endId; ++i)
+    {
+        ofVec3f attractPt(ofGetMouseX(), ofGetMouseY(), 0);
+        force = attractPt - p->m_pos[i];
+        force = glm::normalize(force);
+        p->m_vel[i] *= drag;
+        p->m_vel[i] += force * dt * 10.0;
+    }
+}
+
 void FloorUpdater::update(float dt, ParticleData* p)
 {
     const float localDT = (float)dt;

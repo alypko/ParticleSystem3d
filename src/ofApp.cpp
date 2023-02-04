@@ -6,7 +6,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 	ofSetFrameRate(60);
-	//camera.setAutoDistance(true);
+	camera.setAutoDistance(true);
 	numParticles = 10000;
 	ps = new ParticleSystem(numParticles);
 	numParticles2 = 1000;
@@ -92,6 +92,8 @@ void ofApp::setup(){
 	ps->addUpdater(m_eulerUpdater);
 	ps2->addUpdater(m_eulerUpdater);
 
+	
+
 	auto posColorUpdater = std::make_shared<PosColorUpdater>(); //color based on position
 	posColorUpdater->m_minPos = glm::vec4{ 4.5 };
 	posColorUpdater->m_maxPos = glm::vec4{ 5.0 };
@@ -102,6 +104,8 @@ void ofApp::setup(){
 	m_floorUpdater->m_floorY = 50.f;
 	ps->addUpdater(m_floorUpdater);
 	ps2->addUpdater(m_floorUpdater);
+
+	
 
 	m_renderer = new OFParticleRenderer();
 	m_renderer2 = new OFParticleRenderer();
@@ -129,7 +133,11 @@ void ofApp::draw()
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+	if (key == '1')
+	{
+		auto m_mouseUpdater = std::make_shared<MouseAttractor>();
+		ps2->addUpdater(m_mouseUpdater);
+	}
 }
 
 //--------------------------------------------------------------

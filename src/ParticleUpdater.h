@@ -36,3 +36,13 @@ public:
 public:
 	virtual void update(float dt, ParticleData* p) override;
 };
+
+class MouseAttractor : public ParticleUpdater
+{
+public:
+	float drag{ ofRandom(0.95, 0.998) };
+	glm::vec3 force;
+public:
+	virtual void update(float dt, ParticleData* p) override;
+
+};
